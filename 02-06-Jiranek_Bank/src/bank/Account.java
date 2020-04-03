@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg02.pkg04.shapes;
+package bank;
 
 /**
  *
- * @author Michal Jiránek
+ * @author Misha
  */
-public abstract class Shape {
+public class Account {
     
-    public abstract double computeArea(); //vsichni potomci musi mit tuto metodu
-
 }

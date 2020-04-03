@@ -7,7 +7,7 @@ package pkg02.pkg04.shapes;
 
 /**
  *
- * @author Misha
+ * @author Michal Jiránek
  */
 public class Square extends Rectangle{
     //data
