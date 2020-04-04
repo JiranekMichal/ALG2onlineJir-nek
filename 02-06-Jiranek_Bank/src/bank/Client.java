@@ -5,10 +5,18 @@
  */
 package bank;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Michal Jiránek
  */
 public abstract class Client {
+
+    public abstract void addAccount(int accNumber, double balance);
+    
+    public abstract double totalBalance();
+    
+    public abstract String getName();
     
 }

@@ -22,6 +22,14 @@ public class Account {
     public static Account createWith(int cisloUctu, double zustatek){
         return new Account(cisloUctu, zustatek);
     }
+    
+    public void insert(double insert){
+        this.balance += insert;
+    }
+    
+    public void withdraw(double withdraw){
+        this.balance -= withdraw;
+    }
 
     public double getBalance() {
         return balance;
@@ -32,10 +40,4 @@ public class Account {
         return "Account Number: " + accountNumber + "; Balance: " + balance;
     }
     
-    
-    public static void main(String[] args) {
-        Account a1 = Account.createWith(012567, 526);
-        System.out.println(a1);
-        System.out.println(a1.getBalance());
-    }
 }
