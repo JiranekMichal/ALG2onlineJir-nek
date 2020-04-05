@@ -30,15 +30,16 @@ public class Company extends Client{
         }
         return totalBalance;
     }
-    
+
     @Override
     public String getName() {
-        return "firma " + name;
+        return name;
     }
+    
 
     @Override
     public String toString() {
-        return "Company{" + "name=" + name + '}';
+        return "firma " + name;
     }
 
     

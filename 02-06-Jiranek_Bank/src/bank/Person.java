@@ -30,32 +30,20 @@ public class Person extends Client{
         }
         return totalBalance;
     }
-    
+
     @Override
     public String getName() {
+        return name;
+    }
+    
+
+    @Override
+    public String toString() {
         int length = name.length();
         if(name.charAt(length - 1) == 'a' && name.charAt(length - 2) == 'v' && name.charAt(length - 3) == 'o' ){
             return "pani " + name;
         }
         return "pan " + name;
     }
-
-    @Override
-    public String toString() {
-        return "Person{" + "name=" + name + '}';
-    }
-
-    public static void main(String[] args) {
-        Person pekar = new Person("Pekar");
-        pekar.addAccount(2150, 200);
-        pekar.addAccount(1258, 321);
-        Person svecova = new Person("Svecova");
-        svecova.addAccount(1263, 1800);
-        System.out.println(pekar.getName());
-        System.out.println(pekar.totalBalance());
-        System.out.println(svecova.getName());
-        System.out.println(svecova.totalBalance());
-    }
-    
    
 }

@@ -20,16 +20,27 @@ public class Main {
         clients.add(new Person("Pekar"));
         clients.add(new Person("Svecova"));
         clients.add(new Company("Skoda"));
-        System.out.println(clients.get(0).getName());
-        System.out.println(clients.get(1).getName());
-        System.out.println(clients.get(2).getName());
         clients.get(0).addAccount(0001, 1000);
         clients.get(0).addAccount(0002, 500);
         clients.get(1).addAccount(0003, 1200);
         clients.get(2).addAccount(0004, 120);
-        System.out.println(clients.get(0).getName() + " - zůstatek: " + clients.get(0).totalBalance());
-        System.out.println(clients.get(1).getName() + " - zůstatek: " + clients.get(1).totalBalance());
-        System.out.println(clients.get(2).getName() + " - zůstatek: " + clients.get(2).totalBalance());
+        clientAccounts("Skoda");
+        clientAccounts("Svecova");
+        clientAccounts("Novak");
+        clientAccounts("Pekar");
+    }
+    
+    public static void clientAccounts(String name){
+        boolean goOn = true;
+        for (int i = 0; i < clients.size() && goOn; i++){
+            if(name == clients.get(i).getName()){
+                System.out.println(clients.get(i) + " - zůstatek: " + clients.get(i).totalBalance());
+                goOn = false;
+            }
+        }
+        if(goOn == true){
+            System.out.println("Tento klient neexistuje.");
+        }
     }
     
 }
