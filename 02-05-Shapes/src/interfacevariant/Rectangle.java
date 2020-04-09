@@ -1,11 +1,13 @@
 
-package pkg02.pkg04.shapes;
+package interfacevariant;
+
+
 
 /**
  * Nemenny objekt
  * @author Michal Jiránek
  */
-public class Rectangle extends Shape {
+public class Rectangle implements ShapeInterface {
     //data
     private double a;
     private double b;
@@ -42,6 +44,7 @@ public class Rectangle extends Shape {
     @Override
     public String toString() {
         return "Rectangle: " + "a = " + a + ", b = " + b;
+        //return super.toString() + String.format(" a = %.2f, b = %.2f", a, b);
     }
     
 }

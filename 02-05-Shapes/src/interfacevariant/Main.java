@@ -1,5 +1,6 @@
 
-package pkg02.pkg04.shapes;
+package interfacevariant;
+
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class Main {
         Circle c1 = Circle.getInstanceD(8);
         Rectangle r1 = new Rectangle(2,3);
         Circle c2 = Circle.getInstanceR(2.6);
-        Square s1 = new Square(2);
+        //Square s1 = new Square(2);
         System.out.println("1. varianta");
         double allArea1 =  c1.computeArea() + r1.getArea() + c2.computeArea();
         System.out.println(allArea1);
@@ -28,7 +29,7 @@ public class Main {
         shapes2.add(c1);
         shapes2.add(r1);
         shapes2.add(Circle.getInstanceR(2.6));
-        shapes2.add(s1);
+        //shapes2.add(s1);
         
         double allArea2 = 0;
         for (int i = 0; i < shapes2.size(); i++) { //going through using index
@@ -42,15 +43,15 @@ public class Main {
         
         
         System.out.println("3. varianta");
-        ArrayList<Shape> shapes3 = new ArrayList<>(); //dynamicke pole objektu typu shape
-        //muze obsahovat cokoliv, co je typove kompatibilni s Shape (Shape, Circle, Rectangle)
-        //Shape s = new Rectangle(5, 6);
-        //Rectangle r = new Shape(); //nejde
+        ArrayList<ShapeInterface> shapes3 = new ArrayList<>(); //dynamicke pole objektu typu, které implementuje ShapeInterface
+        //muze obsahovat cokoliv, co je typove kompatibilni se ShapeInterface (Circle, Rectangle)
+        //ShapeInterface s = new Rectangle(5, 6);
+        //Rectangle r = new ShapeInterface(); //nejde ani priradit ani vytvorit objekt
         shapes3.add(c1);
         shapes3.add(r1);
         shapes3.add(Circle.getInstanceR(2.6));
         double allArea3 = 0; 
-        for (Shape shape : shapes3){ //for each
+        for (ShapeInterface shape : shapes3){ //for each
             allArea3 += shape.computeArea(); //polymorfismus
         }
         System.out.println(allArea3);

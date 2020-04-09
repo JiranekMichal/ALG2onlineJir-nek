@@ -1,11 +1,13 @@
 
-package pkg02.pkg04.shapes;
+package interfacevariant;
+
+
 
 /**
  *
  * @author Michal Jiránek
  */
-public class Circle extends Shape{ // Circle je typove kompatibilni s Shape, Circle IS A Shape
+public class Circle implements ShapeInterface{ // Circle je typove kompatibilni s ShapeInterface
     //data
     private double r;
     
@@ -31,6 +33,7 @@ public class Circle extends Shape{ // Circle je typove kompatibilni s Shape, Cir
     @Override
     public String toString() {
         return "Circle: " + "r = " + r;
+        //return super.toString() + String.format(" r = %.2f", r);
     }
     
     @Override
@@ -41,7 +44,7 @@ public class Circle extends Shape{ // Circle je typove kompatibilni s Shape, Cir
     public static void main(String[] args) {
         Circle c1 = Circle.getInstanceR(4);
         System.out.println(c1);
-        System.out.println(c1.computeArea());
+        System.out.println(c1.computeArea());        
     }
     
     
