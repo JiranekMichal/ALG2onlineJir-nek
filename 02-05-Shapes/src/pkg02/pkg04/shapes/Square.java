@@ -12,10 +12,12 @@ package pkg02.pkg04.shapes;
 public class Square extends Rectangle{
     //data
     private double a;
+    private double area;
 
     public Square(double a) {
         super(a, a);
         this.a = a;
+        this.area = super.computeArea();
     }
 
     @Override

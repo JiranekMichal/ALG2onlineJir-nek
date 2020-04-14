@@ -8,7 +8,7 @@ package pkg02.pkg04.shapes;
 public abstract class Shape {
     //data
     protected String name = "Geometric object"; //viditelné v potomcích
-    
+    protected double area = computeArea();
     
     //metody
     public abstract double computeArea(); //vsichni potomci musi mit tuto metodu

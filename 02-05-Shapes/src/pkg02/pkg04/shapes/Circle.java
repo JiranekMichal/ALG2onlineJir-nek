@@ -8,10 +8,12 @@ package pkg02.pkg04.shapes;
 public class Circle extends Shape{ // Circle je typove kompatibilni s Shape, Circle IS A Shape
     //data
     private double r;
+    private double area;
     
     //pristup pouze pres konstruktory - private
     private Circle(double r) {
         this.r = r;
+        this.area = computeArea();
     }
     
     // tovarni metoda - namisto druheho konstruktoru s d

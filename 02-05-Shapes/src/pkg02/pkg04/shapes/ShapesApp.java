@@ -3,7 +3,6 @@ package pkg02.pkg04.shapes;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -216,7 +215,21 @@ public class ShapesApp {
     }
 
     private static void sortByArea() {
-        
+        Shape helper;
+        for(int i = 0; i < shapes.size(); i++){
+            double min = Integer.MAX_VALUE;
+            int minIndex = 0;
+            for (int j = 0; j < shapes.size() - i; j++) {
+                if(min > shapes.get(j).computeArea()){
+                    min = shapes.get(j).computeArea();
+                    minIndex = j;
+                }
+            }
+            helper = shapes.get(minIndex);
+            shapes.remove(minIndex);
+            shapes.add(helper);
+        }
+        printObjects();
     }
    
 }
