@@ -30,8 +30,8 @@ public class Circle extends Shape{ // Circle je typove kompatibilni s Shape, Cir
 
     @Override
     public String toString() {
-        //return "Circle: " + "r = " + r;
-        return super.toString() + String.format(" r = %.2f", r);
+        return "Circle: " + "r = " + r;
+        //return super.toString() + String.format(" r = %.2f", r);
     }
     
     @Override

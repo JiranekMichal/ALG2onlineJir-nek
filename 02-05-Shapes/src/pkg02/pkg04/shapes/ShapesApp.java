@@ -1,7 +1,9 @@
 
 package pkg02.pkg04.shapes;
 
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -49,6 +51,9 @@ public class ShapesApp {
                case 8:
                    getObjectInfo();
                    break;
+               case 9:
+                   sortByArea();
+                   break;
                default:
                    System.out.println("Neplatná volba.");
                  
@@ -67,6 +72,7 @@ public class ShapesApp {
         System.out.println("6. Vypočti celkovou plochu");
         System.out.println("7. Ukaž objekt s největší plochou");
         System.out.println("8. Ukaž info o objektu");
+        System.out.println("9. Setřiď objekty podle plochy");
         System.out.println("0. Konec programu");
         System.out.println("---------------------------------");
         
@@ -208,5 +214,9 @@ public class ShapesApp {
         }while(choise == 0);
         System.out.println(shapes.get(choise - 1) + ", S = " + shapes.get(choise - 1).computeArea());
     }
-    
+
+    private static void sortByArea() {
+        
+    }
+   
 }

@@ -41,8 +41,8 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        //return "Rectangle: " + "a = " + a + ", b = " + b;
-        return super.toString() + String.format(" a = %.2f, b = %.2f", a, b);
+        return "Rectangle: " + "a = " + a + ", b = " + b;
+        //return super.toString() + String.format(" a = %.2f, b = %.2f", a, b);
     }
     
 }
