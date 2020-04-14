@@ -20,14 +20,17 @@ public class Main {
         clients.add(new Person("Pekar"));
         clients.add(new Person("Svecova"));
         clients.add(new Company("Skoda"));
+        System.out.println(clients.get(0));
+        System.out.println(clients.get(1));
+        System.out.println(clients.get(2));
         clients.get(0).addAccount(0001, 1000);
         clients.get(0).addAccount(0002, 500);
         clients.get(1).addAccount(0003, 1200);
         clients.get(2).addAccount(0004, 120);
-        clientAccounts("Skoda");
-        clientAccounts("Svecova");
-        clientAccounts("Novak");
         clientAccounts("Pekar");
+        clientAccounts("Svecova");
+        clientAccounts("Skoda");
+        
     }
     
     public static void clientAccounts(String name){

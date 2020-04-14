@@ -15,28 +15,23 @@ public class Person extends Client{
     public Person(String name) {
         this.name = name;
     }
+   
+    @Override
+    public void addAccount(int accNumber, double balance) {
+        super.addAccount(accNumber, balance);
+    }
     
+   
     @Override
-    public void addAccount(int accNumber, double balance){
-        Account a = Account.createWith(accNumber, balance);
-        accounts.add(a);
+    public double totalBalance() {
+        return super.totalBalance();
     }
-
-    @Override
-    public double totalBalance(){
-        double totalBalance = 0;
-        for(int i = 0; i < accounts.size(); i++){
-            totalBalance += accounts.get(i).getBalance();
-        }
-        return totalBalance;
-    }
-
+    
     @Override
     public String getName() {
         return name;
     }
     
-
     @Override
     public String toString() {
         int length = name.length();

@@ -28,7 +28,11 @@ public class Account {
     }
     
     public void withdraw(double withdraw){
-        this.balance -= withdraw;
+        if(this.balance - withdraw < 0){
+            System.out.println("Nelze vybrat, příliš malý zůstatek. Zůstatek činí: " + getBalance());
+        }else{
+            this.balance -= withdraw;  
+        }
     }
 
     public double getBalance() {

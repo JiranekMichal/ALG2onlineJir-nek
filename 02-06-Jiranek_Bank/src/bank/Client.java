@@ -12,10 +12,24 @@ import java.util.ArrayList;
  * @author Michal Jiránek
  */
 public abstract class Client {
-
-    public abstract void addAccount(int accNumber, double balance);
+    //data
+    protected String name = "Client";
+    protected ArrayList<Account> accounts = new ArrayList<>();
     
-    public abstract double totalBalance();
+    
+
+    public void addAccount(int accNumber, double balance){
+        Account a = Account.createWith(accNumber, balance);
+        accounts.add(a);
+    }
+    
+    public double totalBalance(){
+        double totalBalance = 0;
+        for(int i = 0; i < accounts.size(); i++){
+            totalBalance += accounts.get(i).getBalance();
+        }
+        return totalBalance;
+    }
     
     public abstract String getName();
     
