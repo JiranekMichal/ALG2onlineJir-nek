@@ -10,6 +10,10 @@ import java.util.List;
  * @author Michal Jiránek
  */
 public class Datasource {
+    public static double[]gradesAlice = {5,2.5,3,5,1.5};
+    public static double[]gradesBob = {1,1.5,2,2,1.5};
+    public static double[]gradesCyril = {3,2.5,3,2,1.5};
+    
     public static Student[] data = {
         new Student("Alice", "Mala", 345),
         new Student("Bob", "Velky", 123),

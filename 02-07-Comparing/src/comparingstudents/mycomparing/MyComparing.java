@@ -1,6 +1,10 @@
 
-package comparingstudents;
+package comparingstudents.mycomparing;
 
+import comparingstudents.Datasource;
+import comparingstudents.Student;
+import comparingstudents.mycomparing.PorovnavacStudentByFirstName;
+import comparingstudents.mycomparing.PorovnavacStudentByNumber;
 import java.util.List;
 
 /**
@@ -17,7 +21,12 @@ public class MyComparing {
         print(students);
         System.out.println("Sort by number");
         //sortByNumber(students);
-        sort(students);
+        //sort(students);
+        sort(students, new PorovnavacStudentByNumber());
+        print(students);
+        
+        System.out.println("Sort by first name");
+        sort(students, new PorovnavacStudentByFirstName());
         print(students);
     }
     
@@ -37,6 +46,19 @@ public class MyComparing {
             for (int j = 1; j < array.length - i; j++) {
                 if(array[j-1].isBigger(array[j])){
                     CompareInterface temp = array[j];
+                    array[j] = array[j-1];
+                    array[j-1] = temp;
+                }
+            }
+        }
+    }
+    
+    //tridi pole jakychkoliv objektu, metoda bigger objektu typove kompatibilniho s ComparatorInterface definuje, jak tridit
+    public static void sort(Object [] array, ComparatorInterface o){
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 1; j < array.length - i; j++) {
+                if(o.bigger(array[j-1], array[j])){
+                    Object temp = array[j];
                     array[j] = array[j-1];
                     array[j-1] = temp;
                 }

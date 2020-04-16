@@ -1,5 +1,5 @@
 
-package comparingstudents;
+package comparingstudents.mycomparing;
 
 /**
  *
