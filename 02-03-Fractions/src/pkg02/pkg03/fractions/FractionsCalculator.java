@@ -3,7 +3,7 @@ package pkg02.pkg03.fractions;
 
 /**
  *
- * @author Misha
+ * @author Michal Jiránek
  */
 public class FractionsCalculator {
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Misha
+ * @author Michal Jiránek
  */
 public class Fraction {
     //data
