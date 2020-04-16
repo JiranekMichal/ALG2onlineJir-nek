@@ -7,7 +7,7 @@ package pkg02.pkg02.pointsarray;
 
 /**
  *
- * @author Misha
+ * @author Michal Jiránek
  */
 public class Point {
     //data
