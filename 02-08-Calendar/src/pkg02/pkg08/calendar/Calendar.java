@@ -31,13 +31,45 @@ public class Calendar {
     
     //továrni metoda
     public static Calendar load() {
-        System.out.println("Zadej den ve formátu dd/mm/yyyy");
-        String dayLoad = sc.next();
-        String [] dayString = dayLoad.split("/");
-        int [] day = new int [dayString.length];
-        for (int i = 0; i < day.length; i++) {
-            day[i] = Integer.parseInt(dayString[i]);
-        }
+        boolean goOn;
+        int [] day;
+        do{
+            goOn = true;
+            System.out.println("Zadej den ve formátu dd/mm/yyyy");
+            String dayLoad = sc.next();
+            String [] dayString = dayLoad.split("/");
+            day = new int [dayString.length];
+            for (int i = 0; i < day.length; i++) {
+                day[i] = Integer.parseInt(dayString[i]);
+            }
+            if(day[2] < 0){
+                goOn = false;
+            }
+            if(goOn &&(day[1] < 1 || day[1] > 12)){
+                goOn = false;
+            }
+            if(goOn && day[0] < 1){
+                goOn = false;
+            }
+            year = day[2];
+            if(goOn && day[1] == 2){
+                if(isLeapYear()){
+                    if(day[0] > 29){
+                        goOn = false;
+                    }
+                }else{
+                    if(goOn && day[0] > 28){
+                        goOn = false;
+                    }
+                }
+            }else if(goOn && day[0] > DAYSINMONTH[day[1]]){
+                goOn = false;
+            }
+            if(!goOn){
+                System.out.println("Neplatné datum.");
+            }
+        }while(!goOn);
+        
         return new Calendar(day[0],day[1],day[2]);
     }
     
@@ -91,15 +123,6 @@ public class Calendar {
     
     //retezec - kalendar 
     public static String calendar(){
-        /*StringBuilder calendar = new StringBuilder();
-        calendar.append("| Po | Ut | St | Ct | Pa | So | Ne |");
-        calendar.append("\n");
-        calendar.append("  --   --   --   --   --   --   --  ");
-        calendar.append("\n");
-        calendar.append("|  1 |  2 |  3 |  4 |  5 |  6 |  7 |");
-        calendar.append("\n");
-        calendar.append("|  8 |  9 | 10 | 11 | 12 | 13 | 14 |");
-        return calendar.toString();*/
         
         day = 1;
         int start = dayInWeek();
@@ -180,16 +203,71 @@ public class Calendar {
         for (int k = 0; k < zbytek; k++) {
             calendar.append("    |");
         }
-                
         calendar.append("\n");
         calendar.append("  --   --   --   --   --   --   --  ");
+        calendar.append("\n");
+        calendar.append("\n");
+        calendar.append("  --   --   --   --   --   --   --  ");
+        calendar.append("\n");
+        calendar.append("|  <<<---  |    Měsíc   |  --->>>  |");
+        calendar.append("\n");
+        calendar.append("|    4     |            |     6    |");
+        calendar.append("\n");
+        calendar.append("  --   --   --   --   --   --   --  ");
+        calendar.append("\n");
+        calendar.append("|  <<<---  |     Rok    |  --->>>  |");
+        calendar.append("\n");
+        calendar.append("|    7     |            |     9    |");
+        calendar.append("\n");
+        calendar.append("  --   --   --   --   --   --   --  ");
+        calendar.append("\n");
+        calendar.append("           |    Konec   |           ");
+        calendar.append("\n");
+        calendar.append("           |      0     |           ");
+        calendar.append("\n");
+        calendar.append("            --   --   --            ");
+        
         return calendar.toString();
     }
     
+    public static void nextMonth(){
+        day = 1;
+        if(month == 12){
+            month = 1;
+            year++;
+        }else{
+          month++;  
+        }
+    }
+    
+    public static void previousMonth(){
+        day = 1;
+        if(month == 1){
+            month = 12;
+            year--;
+        }else{
+          month--;  
+        }
+    }
+    
+    public static void nextYear(){
+        day = 1;
+        year++;
+    }
+    
+    public static void previousYear(){
+        day = 1;
+        year--;
+    }
     
     public static void main(String[] args) {
         load();
         //System.out.println(isLeapYear());
+        System.out.println(calendar());
+        previousMonth();
+        previousMonth();
+        previousMonth();
+        previousMonth();
         System.out.println(calendar());
     }
     
