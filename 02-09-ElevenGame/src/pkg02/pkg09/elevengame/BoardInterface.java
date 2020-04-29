@@ -21,10 +21,4 @@ public interface BoardInterface {
 
     public boolean hasWon();
 
-    public void shuffelCards();
-
-    public void drawCards();
-
-    public void makeDeck();
-
 }

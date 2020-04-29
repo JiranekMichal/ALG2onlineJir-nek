@@ -9,86 +9,19 @@ import java.util.Collections;
  * @author Michal Jiránek
  */
 public class Board implements BoardInterface{
-    Card[] cards; //9 karet na stole
     Deck deck; //balicek karet
-    
-    
-    @Override
-    public void makeDeck() {
-        deck.deckCards.add(new Card("kary", "A", 1));
-        deck.deckCards.add(new Card("kary", "2", 2));
-        deck.deckCards.add(new Card("kary", "3", 3));
-        deck.deckCards.add(new Card("kary", "4", 4));
-        deck.deckCards.add(new Card("kary", "5", 5));
-        deck.deckCards.add(new Card("kary", "6", 6));
-        deck.deckCards.add(new Card("kary", "7", 7));
-        deck.deckCards.add(new Card("kary", "8", 8));
-        deck.deckCards.add(new Card("kary", "9", 9));
-        deck.deckCards.add(new Card("kary", "10", 10));
-        deck.deckCards.add(new Card("kary", "J", 0));
-        deck.deckCards.add(new Card("kary", "Q", 0));
-        deck.deckCards.add(new Card("kary", "K", 0));
-        
-        deck.deckCards.add(new Card("piky", "A", 1));
-        deck.deckCards.add(new Card("piky", "2", 2));
-        deck.deckCards.add(new Card("piky", "3", 3));
-        deck.deckCards.add(new Card("piky", "4", 4));
-        deck.deckCards.add(new Card("piky", "5", 5));
-        deck.deckCards.add(new Card("piky", "6", 6));
-        deck.deckCards.add(new Card("piky", "7", 7));
-        deck.deckCards.add(new Card("piky", "8", 8));
-        deck.deckCards.add(new Card("piky", "9", 9));
-        deck.deckCards.add(new Card("piky", "10", 10));
-        deck.deckCards.add(new Card("piky", "J", 0));
-        deck.deckCards.add(new Card("piky", "Q", 0));
-        deck.deckCards.add(new Card("piky", "K", 0));
-        
-        deck.deckCards.add(new Card("srdce", "A", 1));
-        deck.deckCards.add(new Card("srdce", "2", 2));
-        deck.deckCards.add(new Card("srdce", "3", 3));
-        deck.deckCards.add(new Card("srdce", "4", 4));
-        deck.deckCards.add(new Card("srdce", "5", 5));
-        deck.deckCards.add(new Card("srdce", "6", 6));
-        deck.deckCards.add(new Card("srdce", "7", 7));
-        deck.deckCards.add(new Card("srdce", "8", 8));
-        deck.deckCards.add(new Card("srdce", "9", 9));
-        deck.deckCards.add(new Card("srdce", "10", 10));
-        deck.deckCards.add(new Card("srdce", "J", 0));
-        deck.deckCards.add(new Card("srdce", "Q", 0));
-        deck.deckCards.add(new Card("srdce", "K", 0));
-        
-        deck.deckCards.add(new Card("listy", "A", 1));
-        deck.deckCards.add(new Card("listy", "2", 2));
-        deck.deckCards.add(new Card("listy", "3", 3));
-        deck.deckCards.add(new Card("listy", "4", 4));
-        deck.deckCards.add(new Card("listy", "5", 5));
-        deck.deckCards.add(new Card("listy", "6", 6));
-        deck.deckCards.add(new Card("listy", "7", 7));
-        deck.deckCards.add(new Card("listy", "8", 8));
-        deck.deckCards.add(new Card("listy", "9", 9));
-        deck.deckCards.add(new Card("listy", "10", 10));
-        deck.deckCards.add(new Card("listy", "J", 0));
-        deck.deckCards.add(new Card("listy", "Q", 0));
-        deck.deckCards.add(new Card("listy", "K", 0));
-        
+    Card[] cards; //9 karet na stole
+
+    public Board(Deck deck, Card[] cards) {
+        this.deck = deck;
+        this.cards = cards;
     }
+    
+    
     
     @Override
     public String getName() {
         return "Hra jedenactka";
-    }
-    
-    @Override
-    public void shuffelCards() {
-        Collections.shuffle(deck.deckCards);
-    }
-    
-    @Override
-    public void drawCards() {
-        int cardsLength = 9;
-        for (int i = 0; i < cardsLength; i++) {
-            cards[i] = deck.deckCards.get(i);
-        }
     }
 
 
@@ -104,7 +37,7 @@ public class Board implements BoardInterface{
     
     @Override
     public String getCardDescriptionAt(int index){
-        return cards[index].getSymbol() + cards[index].getValue();
+        return cards[index].getSymbol() + "  " + cards[index].getValue() + "  ";
     }
 
     @Override
@@ -123,13 +56,13 @@ public class Board implements BoardInterface{
             boolean isQ = false;
             boolean isK = false;
             for (int i = 0; i < selectedCardsPositions.length; i++) {
-                if("J".equals(cards[i].getValue())){
+                if ("J".equals(cards[parseInt(selectedCardsPositions[i])-1].getValue())) {
                     isJ = true;
                 }
-                if("Q".equals(cards[i].getValue())){
+                if ("Q".equals(cards[parseInt(selectedCardsPositions[i])-1].getValue())) {
                     isQ = true;
                 }
-                if("K".equals(cards[i].getValue())){
+                if ("K".equals(cards[parseInt(selectedCardsPositions[i])-1].getValue())) {
                     isK = true;
                 }
                 if(isJ && isQ && isK){
@@ -153,8 +86,7 @@ public class Board implements BoardInterface{
     private void moveCards(String [] selectedCardsPositions){
         for (String selectedCardsPosition : selectedCardsPositions) {
             if (deck.getDeckSize() > 0) {
-                cards[parseInt(selectedCardsPosition) - 1] = deck.deckCards.get(0);
-                deck.deckCards.remove(0);
+                cards[parseInt(selectedCardsPosition) - 1] = deck.getCard();
             } else {
                 cards[parseInt(selectedCardsPosition) - 1] = new Card("","",0);
             }
@@ -203,7 +135,13 @@ public class Board implements BoardInterface{
         return false;
     }
 
-    
-
-    
+    public static Board startGame(){
+        Deck deck = Deck.makeDeck();
+        deck.shuffle();
+        Card [] cards = new Card [9];
+        for (int i = 0; i < cards.length; i++) {
+            cards[i] = deck.getCard();
+        }
+        return new Board(deck,cards);
+    }
 }
