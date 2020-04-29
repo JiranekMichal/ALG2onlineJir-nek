@@ -123,13 +123,13 @@ public class Board implements BoardInterface{
             boolean isQ = false;
             boolean isK = false;
             for (int i = 0; i < selectedCardsPositions.length; i++) {
-                if(cards[i].getValue() == "J"){
+                if("J".equals(cards[i].getValue())){
                     isJ = true;
                 }
-                if(cards[i].getValue() == "Q"){
+                if("Q".equals(cards[i].getValue())){
                     isQ = true;
                 }
-                if(cards[i].getValue() == "K"){
+                if("K".equals(cards[i].getValue())){
                     isK = true;
                 }
                 if(isJ && isQ && isK){
@@ -151,23 +151,19 @@ public class Board implements BoardInterface{
     }
     
     private void moveCards(String [] selectedCardsPositions){
-        for (int i = 0; i < selectedCardsPositions.length ; i++) {
-            if(deck.getDeckSize() > 0){
-                cards[parseInt(selectedCardsPositions[i])-1] = deck.deckCards.get(0);
+        for (String selectedCardsPosition : selectedCardsPositions) {
+            if (deck.getDeckSize() > 0) {
+                cards[parseInt(selectedCardsPosition) - 1] = deck.deckCards.get(0);
                 deck.deckCards.remove(0);
-            }else{
-                cards[parseInt(selectedCardsPositions[i])-1] = new Card("","",0);
+            } else {
+                cards[parseInt(selectedCardsPosition) - 1] = new Card("","",0);
             }
         }
     }
 
     @Override
     public boolean hasWon() {
-        if(deck.getDeckSize() == 0 && cards.length == 0){
-            return true;
-        }else{
-            return false;    
-        }
+        return deck.getDeckSize() == 0 && cards.length == 0;
     }
 
 
@@ -190,14 +186,14 @@ public class Board implements BoardInterface{
         boolean isJ = false;
         boolean isQ = false;
         boolean isK = false;
-        for (int i = 0; i < cards.length; i++) {
-            if(cards[i].getValue() == "J"){
+        for (Card card : cards) {
+            if ("J".equals(card.getValue())) {
                 isJ = true;
             }
-            if(cards[i].getValue() == "Q"){
+            if ("Q".equals(card.getValue())) {
                 isQ = true;
             }
-            if(cards[i].getValue() == "K"){
+            if ("K".equals(card.getValue())) {
                 isK = true;
             }
             if(isJ && isQ && isK){

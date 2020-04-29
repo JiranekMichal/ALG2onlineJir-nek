@@ -6,9 +6,9 @@ package pkg02.pkg09.elevengame;
  * @author Michal Jiránek
  */
 public class Card {
-    private String symbol;
-    private String value;
-    private int nPoints; //A-1, J,Q,K-0;
+    private final String symbol;
+    private final String value;
+    private final int nPoints; //A-1, J,Q,K-0;
 
     public Card(String symbol, String value, int nPoints) {
         this.symbol = symbol;
