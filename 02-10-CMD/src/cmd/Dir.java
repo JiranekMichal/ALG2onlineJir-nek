@@ -13,20 +13,27 @@ import java.util.Date;
 public class Dir extends Command{
 
     @Override
-    public String execute(File actualDir) {
+    public Execution execute(File actualDir) {
         File[] files;
         if(params.length == 1 || params.length == 2 && "-e".equals(params[1])){
             files = actualDir.listFiles();
-            return dirToString(files);
+            return new Execution(actualDir,dirToString(files));
         }else if(params.length == 2 && "-o".equals(params[1])){
             files = actualDir.listFiles();
             sort(files);
-            return dirToString(files);
+            return new Execution(actualDir,dirToString(files));
         }else if(params.length == 3 && "-e".equals(params[1])){
-            //files = actualDir.listFiles
-            //return dirToString(files);
+            String ending = params[2];
+            FileFilter f = (File pathname) -> pathname.getName().endsWith(ending);
+            files = actualDir.listFiles(f);
+            return new Execution(actualDir,dirToString(files));
+        }else if(params.length == 3 && "-s".equals(params[1])){
+            int size = Integer.parseInt(params[2]);
+            FileFilter f = (File pathname) -> pathname.length()>size;
+            files = actualDir.listFiles(f);
+            return new Execution(actualDir,dirToString(files));
         }
-        return "0";
+        return new Execution(actualDir,"Neplatny prikaz.");
     }
 
     private String dirToString(File[] files) {

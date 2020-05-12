@@ -12,7 +12,7 @@ public class CmdEditor implements CmdInterface{
     private File actualDir;
     private Command command;
 
-    
+
     public CmdEditor(){
         isRunning = true;
         actualDir = new File(System.getProperty("user.dir"));
@@ -34,7 +34,14 @@ public class CmdEditor implements CmdInterface{
         command = Parser.parse(line);
         //execute
         //isRunning = false;
-        return command.execute(actualDir);
+        Execution ex = command.execute(actualDir);
+        actualDir = ex.getActualDir();
+        
+        if(actualDir == null){
+            isRunning = false;
+        }
+        
+        return ex.getText();
     }
     
 }

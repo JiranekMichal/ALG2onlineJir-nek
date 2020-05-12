@@ -17,7 +17,7 @@ public abstract class Command {
         System.arraycopy(params, 0, this.params, 0, params.length);
     }
     
-    public abstract String execute(File actualDir);
+    public abstract Execution execute(File actualDir);
         /*switch(params[0]){
             case "dir": dir(); break;
             case "cd": cd(); break; 
