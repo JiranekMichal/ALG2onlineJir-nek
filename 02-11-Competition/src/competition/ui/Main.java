@@ -1,10 +1,11 @@
 
-package pkg02.pkg11.competition;
+package competition.ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import competition.app.Competition;
 
 /**
  *
@@ -18,19 +19,19 @@ public class Main {
         try{
             while(true){
                 try{
-                    System.out.println("Zadej nezvy vstupnich souboru");
+                    System.out.println("Zadej nazvy vstupnich souboru");
                     String startFile = sc.next();
                     String finishFile = sc.next();
                     c.load(startFile, finishFile);
-                    break;
+                    break;                    
                 }catch(FileNotFoundException e){
                     System.out.println("Spatny zadany soubor. Zadej znovu.");
                 }
             }
             System.out.println(c.getResults());
-            //System.out.println("Zadej nazev vystupniho souboru");
-            //String resultFile = sc.next();
-            //c.saveResults(resultFile);
+            System.out.println("Zadej nazev vystupniho souboru");
+            String resultFile = sc.next();
+            c.saveResults(resultFile);
         }catch(IOException e){
             System.out.println("Chyba pri cteni a zapisu.");
         }catch(NoSuchElementException e){

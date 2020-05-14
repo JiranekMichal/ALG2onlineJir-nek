@@ -1,5 +1,5 @@
 
-package pkg02.pkg11.competition;
+package competition.app;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -57,6 +57,15 @@ public class Runner implements Comparable<Runner>{
         return LocalTime.ofNanoOfDay(finishTime.toNanoOfDay() - startTime.toNanoOfDay());
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    
     @Override
     public String toString() {
         return String.format("%-4d%-10s%-10s%-15s%-15s%-15s", number, firstname, lastname, getStartTimeString(),
