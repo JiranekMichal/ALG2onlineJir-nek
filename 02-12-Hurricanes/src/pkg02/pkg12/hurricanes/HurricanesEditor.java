@@ -31,11 +31,14 @@ public class HurricanesEditor{
 
     public String getInfoFromTo(int yearFrom, int yearTo) {
         StringBuilder sb = new StringBuilder("");
-        sb.append(String.format("Huricany od roku %d do roku %d:",yearFrom, yearTo));
-        sb.append(String.format("-%10s %10s %10s %10s %10s","name","year","month","pressure","speed"));
+        if(yearFrom != Integer.MIN_VALUE){
+           sb.append(String.format("Huricany od roku %d do roku %d:\n",yearFrom, yearTo)); 
+        }
+        sb.append(String.format("%15s %15s %15s %15s %15s\n","name","year","month","pressure[hPa]","speed[kn]"));
         for (Hurricane hurricane : hurricanes) {
             if(hurricane.getYear() >= yearFrom && hurricane.getYear() <= yearTo){
                 sb.append(hurricane);
+                sb.append("\n");
             }
         }
         return sb.toString();
@@ -44,7 +47,7 @@ public class HurricanesEditor{
     public String getCategoryAndSpeed(String name) {
         for (Hurricane hurricane : hurricanes) {
             if(hurricane.getName().equals(name)){
-                return String.format("%-10s %12s rychlost: %4.2f km/h",name,hurricane.cathegory(),hurricane.speedInKmh());
+                return String.format("%10s: %15s, rychlost: %4.2f km/h",name,hurricane.cathegory(),hurricane.speedInKmh());
             }
         }
         return "Tento hurican nenni v zaznamech.";

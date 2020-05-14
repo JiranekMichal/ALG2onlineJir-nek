@@ -40,12 +40,12 @@ public class Hurricane implements Comparable<Hurricane>{
 
     @Override
     public String toString() {
-        return  String.format("-%10s %10d %10s %10d %10d", name,year,month,pressure,speed);
+        return  String.format("%15s %15d %15s %15d %15d", name,year,month,pressure,speed);
     }
     
     public double speedInKmh(){
         double speedKmh = speed * 1.852;
-        return speed;
+        return speedKmh;
     }
     
     public String cathegory(){
