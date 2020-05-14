@@ -1,9 +1,13 @@
 package competition.app;
 
+import competition.filehandling.BinaryReader;
 import competition.utils.IllegalFilenameException;
 import competition.filehandling.Writer;
 import competition.filehandling.TextWriter;
 import competition.filehandling.BinaryWriter;
+import competition.filehandling.Reader;
+import competition.filehandling.TextReader;
+import competition.utils.TxtToDat;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,8 +34,33 @@ public class Competition {
         if(!startFilename.contains("start")){
             throw new IllegalFilenameException("Start soubor musi obsahovat start.");
         }
+        if(!finishFilename.contains("finish")){
+            throw new IllegalFilenameException("Finish soubor musi obsahovat finish.");
+        }
+
+        Reader r;
+        if (startFilename.endsWith(".txt")) {
+            r = new TextReader();
+            }else if(startFilename.endsWith(".dat")){
+            r = new BinaryReader();
+        } else {
+            throw new IllegalArgumentException("Nepordporovana koncovka souboru.");
+        }
+        runners = r.getList(startFilename, runners);
+        
+        if (finishFilename.endsWith(".txt")) {
+            r = new TextReader();
+            }else if(startFilename.endsWith(".dat")){
+            r = new BinaryReader();
+        } else {
+            throw new IllegalArgumentException("Nepordporovana koncovka souboru.");
+        }
+        runners = r.getList(finishFilename, runners);
+
+        
+        
         //nacitani pomoci Scanner
-        File startFile = new File(startFilename);
+        /*File startFile = new File(startFilename);
         try (Scanner inStart = new Scanner(startFile)) {
             while (inStart.hasNext()) {
                 int number = inStart.nextInt();
@@ -67,6 +96,7 @@ public class Competition {
             }
         }
         throw new NoSuchElementException("Bezec s cislem " + number + " nebyl na startu.");
+    }*/
     }
 
     public String getResults() {
