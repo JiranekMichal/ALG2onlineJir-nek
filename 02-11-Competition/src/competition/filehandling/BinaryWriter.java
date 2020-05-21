@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import competition.app.Runner;
+import java.io.File;
 
 /**
  *
@@ -15,7 +16,8 @@ public class BinaryWriter extends Writer{
     //ukladat pouze data, zadne oddelovace, mezery atd.
     @Override
     public void saveResults(String resultFilename, List<Runner> runners) throws IOException {
-        try(DataOutputStream dos = new DataOutputStream(new FileOutputStream(resultFilename))){
+        File resultFile = new File(dataDirectory, resultFilename);
+        try(DataOutputStream dos = new DataOutputStream(new FileOutputStream(resultFile))){
             dos.writeUTF("Nove vysledky");
             int n = 1;
             for (Runner runner : runners) {

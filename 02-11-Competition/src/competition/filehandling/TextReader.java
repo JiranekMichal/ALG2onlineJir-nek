@@ -17,7 +17,7 @@ public class TextReader extends Reader {
     @Override
     public ArrayList<Runner> getList(String filename, ArrayList<Runner> runners) throws IOException {
         if (filename.contains("start")) {
-            File startFile = new File(filename);
+            File startFile = new File(dataDirectory,filename);
             try (BufferedReader inStart = new BufferedReader(new FileReader(startFile))) {
                 String line;
                 while ((line = inStart.readLine()) != null) {
@@ -33,7 +33,7 @@ public class TextReader extends Reader {
                 return runners;
             }
         } else {
-            File finishFile = new File(filename);
+            File finishFile = new File(dataDirectory,filename);
             try (BufferedReader inFinish = new BufferedReader(new FileReader(finishFile))) {
                 String line;
                 while ((line = inFinish.readLine()) != null) { //102 10:02:00:000

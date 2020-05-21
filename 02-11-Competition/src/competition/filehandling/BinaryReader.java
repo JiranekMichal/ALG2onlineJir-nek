@@ -3,6 +3,7 @@ package competition.filehandling;
 import competition.app.Runner;
 import java.io.DataInputStream;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ public class BinaryReader extends Reader {
     @Override
     public ArrayList<Runner> getList(String filename, ArrayList<Runner> runners) throws IOException {
         if (filename.contains("start")) {
-            try (DataInputStream dis = new DataInputStream(new FileInputStream(filename))) {
+            File sfile = new File(dataDirectory,filename);
+            try (DataInputStream dis = new DataInputStream(new FileInputStream(sfile))) {
                 boolean isEnd = false;
                 while (!isEnd) {
                     try {
@@ -34,7 +36,8 @@ public class BinaryReader extends Reader {
                 }
             }
         } else {
-            try (DataInputStream dis = new DataInputStream(new FileInputStream(filename))) {
+            File ffile = new File(dataDirectory,filename);
+            try (DataInputStream dis = new DataInputStream(new FileInputStream(ffile))) {
                 boolean isEnd = false;
                 while (!isEnd) {
                     try {

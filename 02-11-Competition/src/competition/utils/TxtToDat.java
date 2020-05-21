@@ -1,6 +1,7 @@
 package competition.utils;
 
 import competition.app.Runner;
+import static competition.filehandling.Writer.dataDirectory;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -8,8 +9,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -20,7 +20,7 @@ public class TxtToDat {
     public static void txtToDat(String filename) throws IOException {
         if (filename.contains("start")) {
             ArrayList<Runner> runners = new ArrayList<>();
-            File startFile = new File(filename);
+            File startFile = new File(dataDirectory,filename);
             try (BufferedReader inStart = new BufferedReader(new FileReader(startFile))) {
                 String line;
                 while ((line = inStart.readLine()) != null) {
@@ -44,7 +44,7 @@ public class TxtToDat {
             }
         } else {
             ArrayList<RunnerFinish> runnersFinish = new ArrayList<>();
-            File finishFile = new File(filename);
+            File finishFile = new File(dataDirectory,filename);
             try (BufferedReader inFinish = new BufferedReader(new FileReader(finishFile))) {
                 String line;
                 while ((line = inFinish.readLine()) != null) { //102 10:02:00:000
