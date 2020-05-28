@@ -203,6 +203,9 @@ public class Kraj {
         } else if (startKarant == null) {
             if (nNakazenych == 0) {
                 if (nVylecenych == 0) {
+                    if(getPomerNakaz() == -1){
+                        return String.format("%-24s%-22d%-8d(%9s)%-3s%-27d%-12d(%9s)%-5s%-22s%-22s%-4d", name, nObyvatel, nNakazenych, messege, "", nHospital, nVylecenych, messege, "", messege, messege, 0);
+                    }
                     return String.format("%-24s%-22d%-11d(%6.2f)%-3s%-27d%-12d(%9s)%-5s%-22s%-22s%-4d", name, nObyvatel, nNakazenych, getPomerNakaz(), "", nHospital, nVylecenych, messege, "", messege, messege, 0);
                 }
                 return String.format("%-24s%-22d%-11d(%6.2f)%-3s%-27d%-18d(%3s)%-5s%-22s%-22s%-4d", name, nObyvatel, nNakazenych, getPomerNakaz(), "", nHospital, nVylecenych, "Inf", "", messege, messege, 0);
