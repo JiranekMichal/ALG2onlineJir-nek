@@ -273,11 +273,11 @@ public class Republic implements RepublicInterface {
     public String getKrajInfo(String nazev) {
         Kraj k = findKraj(nazev);
         StringBuilder sb = new StringBuilder("");
-        sb.append(String.format("%s%n", "--------------------------------------------------------------------------------------------------------------------------------------------------------------------"));
-        sb.append(String.format("%-24s%-22s%-22s%-27s%-22s%-22s%-22s%-4s%n", "nazev", "pocet obyvatel", "pocet nakazenych(%)", "pocet hostalizovanych", "pocet vylecenych", "zacatek karanteny", "konec karanteny", "dny"));
-        sb.append(String.format("%s%n", "--------------------------------------------------------------------------------------------------------------------------------------------------------------------"));
+        sb.append(String.format("%s%n", "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"));
+        sb.append(String.format("%-24s%-22s%-22s%-27s%-28s%-22s%-22s%-4s%n", "nazev", "pocet obyvatel", "pocet nakazenych(%)", "pocet hostalizovanych", "pocet vylecenych (k.n.)", "zacatek karanteny", "konec karanteny", "dny"));
+        sb.append(String.format("%s%n", "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"));
         sb.append(String.format("%s%n", k.toString()));
-        sb.append(String.format("%s%n", "--------------------------------------------------------------------------------------------------------------------------------------------------------------------"));
+        sb.append(String.format("%s%n", "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"));
         return sb.toString();
     }
 
